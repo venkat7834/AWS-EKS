@@ -1,3 +1,4 @@
+
 #!/bin/bash
 #
 # Common setup for all servers (Control Plane and Nodes)
