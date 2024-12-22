@@ -2,8 +2,8 @@
 #
 # Common setup for all servers (Control Plane and Nodes)
 
-set -euxo pipefail
-
+#set -euxo pipefail
+apt install curl -y
 # Kuernetes Variable Declaration
 
 KUBERNETES_VERSION="1.29.0-1.1"
