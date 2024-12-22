@@ -23,23 +23,23 @@ OS="xUbuntu_22.04"
 VERSION="1.28/1.28.0"
 
 # Create the .conf file to load the modules at bootup
-cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
-overlay
-br_netfilter
-EOF
+#cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
+#overlay
+#br_netfilter
+#EOF
 
-sudo modprobe overlay
-sudo modprobe br_netfilter
+#sudo modprobe overlay
+#sudo modprobe br_netfilter
 
 # sysctl params required by setup, params persist across reboots
-cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
-net.bridge.bridge-nf-call-iptables  = 1
-net.bridge.bridge-nf-call-ip6tables = 1
-net.ipv4.ip_forward                 = 1
-EOF
+#cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
+#net.bridge.bridge-nf-call-iptables  = 1
+#net.bridge.bridge-nf-call-ip6tables = 1
+#net.ipv4.ip_forward                 = 1
+#EOF
 
 # Apply sysctl params without reboot
-sudo sysctl --system
+#sudo sysctl --system
 
 cat <<EOF | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
 deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/$OS/ /
@@ -77,7 +77,7 @@ sudo apt-mark hold kubelet kubeadm kubectl
 
 sudo apt-get install -y jq
 
-local_ip="$(ip --json addr show eth0 | jq -r '.[0].addr_info[] | select(.family == "inet") | .local')"
-cat > /etc/default/kubelet << EOF
-KUBELET_EXTRA_ARGS=--node-ip=$local_ip
-EOF
+#local_ip="$(ip --json addr show eth0 | jq -r '.[0].addr_info[] | select(.family == "inet") | .local')"
+#cat > /etc/default/kubelet << EOF
+#KUBELET_EXTRA_ARGS=--node-ip=$local_ip
+#EOF
