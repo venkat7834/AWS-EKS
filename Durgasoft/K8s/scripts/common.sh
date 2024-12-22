@@ -20,7 +20,7 @@ sudo apt-get update -y
 
 OS="xUbuntu_22.04"
 
-VERSION="1.28"
+VERSION="1.28/1.28.0"
 
 # Create the .conf file to load the modules at bootup
 cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
